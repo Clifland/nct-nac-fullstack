@@ -1,75 +1,51 @@
-# Nuxt Minimal Starter
+# nct-nac-fullstack
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A full-stack starter template to demonstrate `nuxt-crud-table` (nct) with `nuxt-auto-crud` - a dynamic crud engine. 
+Build completely operational, schema-driven administrative interfaces and backend API layers simultaneously.
 
-## Setup
+---
 
-Make sure to install dependencies:
+## Installation
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+### 1. Initialize the Project
 
 ```bash
-# npm
-npm run dev
+nuxi init -t gh:Clifland/nct-nac-fullstack <your-app-name>
 
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
+### 2. Run the development server
 
 ```bash
-# npm
-npm run build
+cd <your-app-name>
+nuxt dev
 
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+---
+
+## Quick Start & UI Overview
+
+An example based on products schema can be managed at:
+
+📍 **URL:** `http://localhost:3000/resource/products`
+
+This dynamic dashboard workspace demonstrates the instant synchronization between front-end UI representations and automatic backend schemas:
+
+* **Creating Records:** Look at the **top right** corner of the workspace screen to find the **"Add New Product"** button. Clicking this instantly spins up an auto-validated form matching your schema layout context.
+* **Row Operations (View, Edit, Delete):** To keep your data grid clear and tightly focused, standard administrative row actions are neatly encapsulated. On the **right side of each row**, hover over or select the **hamburger icon menu** to toggle visibility for individual **View**, **Edit**, or **Delete** interaction tools.
+
+---
+
+## Adding Your Own Resource
+
+1. Define your new resource's database structure in `server/db/schema.ts` file.
+2. Generate & apply migrations And restart app with command:
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+nuxt db generate
+nuxt dev
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+> [!Note]
+> The `nuxt-crud-table` view mounted under the dynamic `[resource]` route will automatically adjust to display updated columns, form structures, data fields, and operational workflows.
