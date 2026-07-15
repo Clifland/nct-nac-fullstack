@@ -1,11 +1,31 @@
-<script lang="ts" setup>
+<script setup lang="ts">
+import InvoiceTemplate from '~/components/InvoiceTemplate.vue'
+
 const route = useRoute()
-const slug = route.params.slug as string
+const resource = route.params.slug as string
+// import ShippingLabel from '~/components/ShippingLabel.vue'
+
+const templateMap: Record<string, Component> = {
+  orderitems: InvoiceTemplate,
+  // shipments: ShippingLabel,
+}
 </script>
 
 <template>
-    <div>
-        <h1>Resource: {{ slug }}</h1>
-        <NctCrudTable :resource="slug" />
-    </div>
+  <div v-if="resource">
+    <NctCrudTable :resource="resource">
+      <template #print-template="slotProps">
+        <component
+          :is="templateMap[slotProps.resource!]"
+          v-bind="slotProps"
+        />
+      </template>
+    </NctCrudTable>
+  </div>
+  <div
+    v-else
+    class="p-4"
+  >
+    Loading Data Table...
+  </div>
 </template>

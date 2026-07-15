@@ -6,5 +6,8 @@ export default defineNuxtConfig({
   modules: ['@nuxt/ui', '@nuxthub/core', 'nuxt-auto-crud', 'nuxt-crud-table'],
   hub: {
     db: 'sqlite'
-  }
+  },
+  autoCrud: {
+    relationsPath: 'server/db/relations',
+  },
 })
