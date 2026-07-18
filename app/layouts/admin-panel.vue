@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const { isAuthenticated, logout } = useNctAuth()
+const { loggedIn, logout } = useNctAuth()
 </script>
 
 <template>
   <div class="p-6 space-y-6">
     <!-- Unauthenticated state: Intercept interface with login wall -->
-    <div v-if="!isAuthenticated" class="min-h-[50vh] flex items-center justify-center">
+    <div v-if="!loggedIn" class="min-h-[50vh] flex items-center justify-center">
       <NctAuthForm />
     </div>
 
