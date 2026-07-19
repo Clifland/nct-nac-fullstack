@@ -1,7 +1,7 @@
 <script setup lang="ts">
-// definePageMeta({
-//   layout: 'admin-panel',
-// })
+definePageMeta({
+  layout: 'admin-panel',
+})
 
 import InvoiceTemplate from '~/components/InvoiceTemplate.vue'
 

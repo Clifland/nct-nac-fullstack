@@ -16,8 +16,8 @@
     "drizzle-orm": "^1.0.0-rc.4",
     "nuxt": "^4.4.8",
     "nuxt-auth-utils": "^0.5.29",
-    "nuxt-auto-crud": "^2.6.1",
-    "nuxt-crud-table": "^0.1.0-rc.5",
+    "nuxt-auto-crud": "^2.6.3",
+    "nuxt-crud-table": "^0.1.0-rc.6",
     "tailwindcss": "^4.3.3",
     "vue": "^3.5.39",
     "vue-router": "^5.1.0"
