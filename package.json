@@ -11,16 +11,16 @@
   },
   "dependencies": {
     "@libsql/client": "^0.17.4",
-    "@nuxt/ui": "^4.0.0",
+    "@nuxt/ui": "^4.10.0",
     "@nuxthub/core": "0.10.8",
     "drizzle-orm": "^1.0.0-rc.4",
-    "nuxt": "^4.4.8",
+    "nuxt": "^4.5.0",
     "nuxt-auth-utils": "^0.5.29",
-    "nuxt-auto-crud": "^2.6.3",
+    "nuxt-auto-crud": "nuxt-auto-crud-2.7.0.tgz",
     "nuxt-crud-table": "^0.1.0-rc.6",
     "tailwindcss": "^4.3.3",
-    "vue": "^3.5.39",
-    "vue-router": "^5.1.0"
+    "vue": "^3.5.40",
+    "vue-router": "^5.2.0"
   },
   "devDependencies": {
     "drizzle-kit": "^1.0.0-rc.4"

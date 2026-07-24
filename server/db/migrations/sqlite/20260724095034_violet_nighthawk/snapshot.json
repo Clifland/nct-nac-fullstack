@@ -1,25 +1,25 @@
 {
   "version": "7",
   "dialect": "sqlite",
-  "id": "b8980ed0-0967-4b81-a055-24fe0adcdd6e",
+  "id": "f3e9d5e1-3f12-4f35-b0ff-b85bf53e72aa",
   "prevIds": [
     "00000000-0000-0000-0000-000000000000"
   ],
   "ddl": [
     {
-      "name": "customers",
+      "name": "permissions",
       "entityType": "tables"
     },
     {
-      "name": "orderitems",
+      "name": "resources",
       "entityType": "tables"
     },
     {
-      "name": "orders",
+      "name": "role_resource_permissions",
       "entityType": "tables"
     },
     {
-      "name": "products",
+      "name": "roles",
       "entityType": "tables"
     },
     {
@@ -34,7 +34,7 @@
       "generated": null,
       "name": "id",
       "entityType": "columns",
-      "table": "customers"
+      "table": "permissions"
     },
     {
       "type": "text",
@@ -42,139 +42,19 @@
       "autoincrement": false,
       "default": null,
       "generated": null,
-      "name": "name",
+      "name": "code",
       "entityType": "columns",
-      "table": "customers"
-    },
-    {
-      "type": "text",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "email",
-      "entityType": "columns",
-      "table": "customers"
+      "table": "permissions"
     },
     {
       "type": "text",
       "notNull": false,
       "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "phone",
-      "entityType": "columns",
-      "table": "customers"
-    },
-    {
-      "type": "integer",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "created_at",
-      "entityType": "columns",
-      "table": "customers"
-    },
-    {
-      "type": "integer",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "updated_at",
-      "entityType": "columns",
-      "table": "customers"
-    },
-    {
-      "type": "integer",
-      "notNull": false,
-      "autoincrement": true,
-      "default": null,
-      "generated": null,
-      "name": "id",
-      "entityType": "columns",
-      "table": "orderitems"
-    },
-    {
-      "type": "integer",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "order_id",
-      "entityType": "columns",
-      "table": "orderitems"
-    },
-    {
-      "type": "integer",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "product_id",
-      "entityType": "columns",
-      "table": "orderitems"
-    },
-    {
-      "type": "integer",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "quantity",
-      "entityType": "columns",
-      "table": "orderitems"
-    },
-    {
-      "type": "numeric",
-      "notNull": false,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "price",
-      "entityType": "columns",
-      "table": "orderitems"
-    },
-    {
-      "type": "integer",
-      "notNull": false,
-      "autoincrement": true,
-      "default": null,
-      "generated": null,
-      "name": "id",
-      "entityType": "columns",
-      "table": "orders"
-    },
-    {
-      "type": "text",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "num",
-      "entityType": "columns",
-      "table": "orders"
-    },
-    {
-      "type": "integer",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "customer_id",
-      "entityType": "columns",
-      "table": "orders"
-    },
-    {
-      "type": "text",
-      "notNull": true,
-      "autoincrement": false,
-      "default": "'pending'",
+      "default": "'active'",
       "generated": null,
       "name": "status",
       "entityType": "columns",
-      "table": "orders"
+      "table": "permissions"
     },
     {
       "type": "integer",
@@ -184,7 +64,7 @@
       "generated": null,
       "name": "created_at",
       "entityType": "columns",
-      "table": "orders"
+      "table": "permissions"
     },
     {
       "type": "integer",
@@ -194,7 +74,37 @@
       "generated": null,
       "name": "updated_at",
       "entityType": "columns",
-      "table": "orders"
+      "table": "permissions"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "deleted_at",
+      "entityType": "columns",
+      "table": "permissions"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "created_by",
+      "entityType": "columns",
+      "table": "permissions"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "updated_by",
+      "entityType": "columns",
+      "table": "permissions"
     },
     {
       "type": "integer",
@@ -204,7 +114,7 @@
       "generated": null,
       "name": "id",
       "entityType": "columns",
-      "table": "products"
+      "table": "resources"
     },
     {
       "type": "text",
@@ -214,37 +124,17 @@
       "generated": null,
       "name": "name",
       "entityType": "columns",
-      "table": "products"
+      "table": "resources"
     },
     {
       "type": "text",
-      "notNull": true,
+      "notNull": false,
       "autoincrement": false,
-      "default": null,
+      "default": "'active'",
       "generated": null,
-      "name": "sku",
+      "name": "status",
       "entityType": "columns",
-      "table": "products"
-    },
-    {
-      "type": "numeric",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "price",
-      "entityType": "columns",
-      "table": "products"
-    },
-    {
-      "type": "integer",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "stock",
-      "entityType": "columns",
-      "table": "products"
+      "table": "resources"
     },
     {
       "type": "integer",
@@ -254,7 +144,7 @@
       "generated": null,
       "name": "created_at",
       "entityType": "columns",
-      "table": "products"
+      "table": "resources"
     },
     {
       "type": "integer",
@@ -264,7 +154,127 @@
       "generated": null,
       "name": "updated_at",
       "entityType": "columns",
-      "table": "products"
+      "table": "resources"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "deleted_at",
+      "entityType": "columns",
+      "table": "resources"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "created_by",
+      "entityType": "columns",
+      "table": "resources"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "updated_by",
+      "entityType": "columns",
+      "table": "resources"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "role_id",
+      "entityType": "columns",
+      "table": "role_resource_permissions"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "resource_id",
+      "entityType": "columns",
+      "table": "role_resource_permissions"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "permission_id",
+      "entityType": "columns",
+      "table": "role_resource_permissions"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": "'active'",
+      "generated": null,
+      "name": "status",
+      "entityType": "columns",
+      "table": "role_resource_permissions"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "table": "role_resource_permissions"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "table": "role_resource_permissions"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "deleted_at",
+      "entityType": "columns",
+      "table": "role_resource_permissions"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "created_by",
+      "entityType": "columns",
+      "table": "role_resource_permissions"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "updated_by",
+      "entityType": "columns",
+      "table": "role_resource_permissions"
     },
     {
       "type": "integer",
@@ -273,6 +283,96 @@
       "default": null,
       "generated": null,
       "name": "id",
+      "entityType": "columns",
+      "table": "roles"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "roles"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": "'active'",
+      "generated": null,
+      "name": "status",
+      "entityType": "columns",
+      "table": "roles"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "table": "roles"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "table": "roles"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "deleted_at",
+      "entityType": "columns",
+      "table": "roles"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "created_by",
+      "entityType": "columns",
+      "table": "roles"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "updated_by",
+      "entityType": "columns",
+      "table": "roles"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "users"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": "1",
+      "generated": null,
+      "name": "role_id",
       "entityType": "columns",
       "table": "users"
     },
@@ -298,7 +398,7 @@
     },
     {
       "type": "text",
-      "notNull": true,
+      "notNull": false,
       "autoincrement": false,
       "default": null,
       "generated": null,
@@ -310,9 +410,9 @@
       "type": "text",
       "notNull": false,
       "autoincrement": false,
-      "default": null,
+      "default": "'active'",
       "generated": null,
-      "name": "avatar",
+      "name": "status",
       "entityType": "columns",
       "table": "users"
     },
@@ -337,57 +437,102 @@
       "table": "users"
     },
     {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "deleted_at",
+      "entityType": "columns",
+      "table": "users"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "created_by",
+      "entityType": "columns",
+      "table": "users"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "updated_by",
+      "entityType": "columns",
+      "table": "users"
+    },
+    {
       "columns": [
-        "order_id"
+        "role_id"
       ],
-      "tableTo": "orders",
+      "tableTo": "roles",
       "columnsTo": [
         "id"
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "CASCADE",
       "nameExplicit": false,
-      "name": "fk_orderitems_order_id_orders_id_fk",
+      "name": "fk_role_resource_permissions_role_id_roles_id_fk",
       "entityType": "fks",
-      "table": "orderitems"
+      "table": "role_resource_permissions"
     },
     {
       "columns": [
-        "product_id"
+        "resource_id"
       ],
-      "tableTo": "products",
+      "tableTo": "resources",
       "columnsTo": [
         "id"
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "CASCADE",
       "nameExplicit": false,
-      "name": "fk_orderitems_product_id_products_id_fk",
+      "name": "fk_role_resource_permissions_resource_id_resources_id_fk",
       "entityType": "fks",
-      "table": "orderitems"
+      "table": "role_resource_permissions"
     },
     {
       "columns": [
-        "customer_id"
+        "permission_id"
       ],
-      "tableTo": "customers",
+      "tableTo": "permissions",
       "columnsTo": [
         "id"
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "CASCADE",
       "nameExplicit": false,
-      "name": "fk_orders_customer_id_customers_id_fk",
+      "name": "fk_role_resource_permissions_permission_id_permissions_id_fk",
       "entityType": "fks",
-      "table": "orders"
+      "table": "role_resource_permissions"
+    },
+    {
+      "columns": [
+        "role_id"
+      ],
+      "tableTo": "roles",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "nameExplicit": false,
+      "name": "fk_users_role_id_roles_id_fk",
+      "entityType": "fks",
+      "table": "users"
     },
     {
       "columns": [
         "id"
       ],
       "nameExplicit": false,
-      "name": "customers_pk",
-      "table": "customers",
+      "name": "permissions_pk",
+      "table": "permissions",
       "entityType": "pks"
     },
     {
@@ -395,8 +540,8 @@
         "id"
       ],
       "nameExplicit": false,
-      "name": "orderitems_pk",
-      "table": "orderitems",
+      "name": "resources_pk",
+      "table": "resources",
       "entityType": "pks"
     },
     {
@@ -404,17 +549,8 @@
         "id"
       ],
       "nameExplicit": false,
-      "name": "orders_pk",
-      "table": "orders",
-      "entityType": "pks"
-    },
-    {
-      "columns": [
-        "id"
-      ],
-      "nameExplicit": false,
-      "name": "products_pk",
-      "table": "products",
+      "name": "roles_pk",
+      "table": "roles",
       "entityType": "pks"
     },
     {
@@ -428,21 +564,43 @@
     },
     {
       "columns": [
-        "email"
+        {
+          "value": "role_id",
+          "isExpression": false
+        },
+        {
+          "value": "resource_id",
+          "isExpression": false
+        },
+        {
+          "value": "permission_id",
+          "isExpression": false
+        }
       ],
-      "nameExplicit": false,
-      "name": "customers_email_unique",
-      "entityType": "uniques",
-      "table": "customers"
+      "isUnique": true,
+      "where": null,
+      "origin": "manual",
+      "name": "unq_role_res_perm",
+      "entityType": "indexes",
+      "table": "role_resource_permissions"
     },
     {
       "columns": [
-        "num"
+        "name"
       ],
       "nameExplicit": false,
-      "name": "orders_num_unique",
+      "name": "resources_name_unique",
       "entityType": "uniques",
-      "table": "orders"
+      "table": "resources"
+    },
+    {
+      "columns": [
+        "name"
+      ],
+      "nameExplicit": false,
+      "name": "roles_name_unique",
+      "entityType": "uniques",
+      "table": "roles"
     },
     {
       "columns": [

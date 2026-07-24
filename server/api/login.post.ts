@@ -10,18 +10,27 @@ export default defineEventHandler(async (event) => {
   const { email, password } = await readValidatedBody(event, loginSchema.parse)
 
   const user = await db.select().from(schema.users).where(eq(schema.users.email, email)).get()
-  if (!user || !(await verifyPassword(user.password, password))) {
+
+  if (!user || !(await verifyPassword(user.password ?? '', password))) {
     throw createError({ statusCode: 401, statusMessage: 'Invalid credentials' })
   }
 
+  // Fetch mapped user permissions
+  const permissions = await getUserPermissions(user.id)
+
+  const sessionUser = {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    permissions,
+    createdAt: user.createdAt,
+  }
+
   await setUserSession(event, {
-    user: {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-    },
+    user: sessionUser,
+    secure: { permissions },
     loggedInAt: new Date(),
   })
 
-  return { user }
+  return { user: sessionUser }
 })
