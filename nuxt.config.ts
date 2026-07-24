@@ -14,7 +14,7 @@ export default defineNuxtConfig({
   crudTable: {
     auth: {
       authentication: 'nuxt-auth-utils',
-      // authorization: "nuxt-crud-permissions",
+      authorization: "nuxt-crud-permissions",
     }
   },
   autoCrud: {

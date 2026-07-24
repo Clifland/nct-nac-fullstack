@@ -8,13 +8,9 @@ export default defineTask({
 
     const hashed_password = await hashPassword('$1Password')
 
-    const roles = [
-      { name: 'Admin' }, { name: 'Manager' }, { name: 'Editor' }, { name: 'Guest' }
-    ]
+    const roles = [{ name: 'Admin' }, { name: 'Manager' }, { name: 'Editor' }, { name: 'Guest' }]
 
-    const resources = [
-      { name: 'users' }, { name: 'roles' }, { name: 'permissions' }, { name: 'role_resource_permissions' }
-    ]
+    const resources = [ { name: 'users' }, { name: 'roles' }, { name: 'resources' }, { name: 'permissions' }, { name: 'role_resource_permissions' } ]
 
     const permissions = [
       { code: 'create' },
@@ -25,6 +21,7 @@ export default defineTask({
       // { code: 'export' }, { code: 'export_own' },
     ]
 
+    // Seeding full permission for admin
     let role_resource_permissions = (() => {
       const arr = []
       for (let j = 0; j < resources.length; j++) {
